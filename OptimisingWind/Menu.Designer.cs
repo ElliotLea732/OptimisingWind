@@ -35,6 +35,7 @@ namespace OptimisingWind
             this.lblSubtitle = new System.Windows.Forms.Label();
             this.btnNewFile = new System.Windows.Forms.Button();
             this.btnLoadFile = new System.Windows.Forms.Button();
+            this.btnQuit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureTurbine)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,6 +79,7 @@ namespace OptimisingWind
             this.btnNewFile.TabIndex = 3;
             this.btnNewFile.Text = "New file";
             this.btnNewFile.UseVisualStyleBackColor = true;
+            this.btnNewFile.Click += new System.EventHandler(this.btnNewFile_Click);
             // 
             // btnLoadFile
             // 
@@ -88,12 +90,23 @@ namespace OptimisingWind
             this.btnLoadFile.Text = "Load file";
             this.btnLoadFile.UseVisualStyleBackColor = true;
             // 
+            // btnQuit
+            // 
+            this.btnQuit.Location = new System.Drawing.Point(345, 409);
+            this.btnQuit.Name = "btnQuit";
+            this.btnQuit.Size = new System.Drawing.Size(179, 55);
+            this.btnQuit.TabIndex = 5;
+            this.btnQuit.Text = "Quit";
+            this.btnQuit.UseVisualStyleBackColor = true;
+            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(1174, 593);
+            this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.btnLoadFile);
             this.Controls.Add(this.btnNewFile);
             this.Controls.Add(this.lblSubtitle);
@@ -115,6 +128,7 @@ namespace OptimisingWind
         private System.Windows.Forms.Label lblSubtitle;
         private System.Windows.Forms.Button btnNewFile;
         private System.Windows.Forms.Button btnLoadFile;
+        private System.Windows.Forms.Button btnQuit;
     }
 }
 
