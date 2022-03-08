@@ -31,16 +31,13 @@ namespace OptimisingWind
         {
             this.lblTurbineArea = new System.Windows.Forms.Label();
             this.lblUnplaced = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnRun = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.lblProgramName = new System.Windows.Forms.Label();
             this.btnFile = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnRunSettings = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.tblTurbineStore = new System.Windows.Forms.TableLayoutPanel();
             this.SuspendLayout();
             // 
             // lblTurbineArea
@@ -57,42 +54,27 @@ namespace OptimisingWind
             // 
             this.lblUnplaced.AutoSize = true;
             this.lblUnplaced.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblUnplaced.Location = new System.Drawing.Point(853, 118);
+            this.lblUnplaced.Location = new System.Drawing.Point(670, 119);
             this.lblUnplaced.Name = "lblUnplaced";
             this.lblUnplaced.Size = new System.Drawing.Size(171, 28);
             this.lblUnplaced.TabIndex = 1;
             this.lblUnplaced.Text = "Unplaced turbines";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(832, 163);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(246, 170);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(81, 131);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(531, 330);
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
-            // 
             // btnRun
             // 
-            this.btnRun.Location = new System.Drawing.Point(784, 384);
+            this.btnRun.Location = new System.Drawing.Point(851, 444);
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(164, 47);
             this.btnRun.TabIndex = 4;
             this.btnRun.Text = "Run";
             this.btnRun.UseVisualStyleBackColor = true;
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(287, 505);
+            this.btnBack.Location = new System.Drawing.Point(625, 444);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(129, 40);
+            this.btnBack.Size = new System.Drawing.Size(134, 47);
             this.btnBack.TabIndex = 5;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -135,6 +117,25 @@ namespace OptimisingWind
             this.btnRunSettings.Text = "Edit run settings";
             this.btnRunSettings.UseVisualStyleBackColor = true;
             // 
+            // tblTurbineStore
+            // 
+            this.tblTurbineStore.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tblTurbineStore.ColumnCount = 5;
+            this.tblTurbineStore.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tblTurbineStore.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tblTurbineStore.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tblTurbineStore.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tblTurbineStore.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tblTurbineStore.Location = new System.Drawing.Point(670, 174);
+            this.tblTurbineStore.Name = "tblTurbineStore";
+            this.tblTurbineStore.RowCount = 4;
+            this.tblTurbineStore.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblTurbineStore.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblTurbineStore.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblTurbineStore.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblTurbineStore.Size = new System.Drawing.Size(200, 160);
+            this.tblTurbineStore.TabIndex = 11;
+            // 
             // programForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -146,15 +147,12 @@ namespace OptimisingWind
             this.Controls.Add(this.lblProgramName);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnRun);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblUnplaced);
             this.Controls.Add(this.lblTurbineArea);
+            this.Controls.Add(this.tblTurbineStore);
             this.Name = "programForm";
             this.Text = "programForm";
             this.Load += new System.EventHandler(this.programForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,13 +162,12 @@ namespace OptimisingWind
 
         private System.Windows.Forms.Label lblTurbineArea;
         private System.Windows.Forms.Label lblUnplaced;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnRun;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label lblProgramName;
         private System.Windows.Forms.Button btnFile;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnRunSettings;
+        private System.Windows.Forms.TableLayoutPanel tblTurbineStore;
     }
 }

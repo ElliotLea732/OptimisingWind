@@ -48,26 +48,30 @@ namespace OptimisingWind
             if (int.TryParse(areaLenInput, out int areaLenTry) == false)
             {
                 // pop up box with please enter an integer in the length box
+                System.Windows.Forms.MessageBox.Show("Please enter an integer in the length box");
             } else if (int.TryParse(areaWidthInput, out int areaWidthTry) == false)
             {
                 // pop up box with please enter an integer in the width box
+                System.Windows.Forms.MessageBox.Show("Please enter an integer in the width box");
             } else if (int.TryParse(noTurbinesInput, out int noTurbinesTry) == false)
             {
                 // pop up box with please enter an integer in the turbines no box
-            } else if (areaLenTry > 4000 || areaLenTry < 800)
+                System.Windows.Forms.MessageBox.Show("Please enter an integer in the turbine number box");
+            } else if (areaLenTry > 2000 || areaLenTry < 800)
             {
                 // pop up box with values outside allowed area
-            } else if (areaWidthTry > 4000 || areaWidthTry < 800)
+                System.Windows.Forms.MessageBox.Show("Please enter a length value within the allowed area");
+            } else if (areaWidthTry > 2000 || areaWidthTry < 800)
             {
                 // pop up box with values outside allowed area
-            } else if (noTurbinesTry > 20 || noTurbinesTry < 0)
+                System.Windows.Forms.MessageBox.Show("Please enter a width value within the allowed area");
+            } else if (noTurbinesTry > 20 || noTurbinesTry < 5)
             {
                 // pop up box with values outside allowed area
+                System.Windows.Forms.MessageBox.Show("Please enter a turbine value within the allowed area");
             } else
             {
-                //assign final variables and make new form
-
-                //assign variables to newly created form??
+                //assign validated variables and make new form
 
                 if (programForm == null)
                 {

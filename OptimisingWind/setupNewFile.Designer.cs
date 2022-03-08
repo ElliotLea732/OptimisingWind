@@ -146,7 +146,7 @@ namespace OptimisingWind
             this.lblLengthGuide.Name = "lblLengthGuide";
             this.lblLengthGuide.Size = new System.Drawing.Size(297, 20);
             this.lblLengthGuide.TabIndex = 10;
-            this.lblLengthGuide.Text = "Enter a value between 800 and 4000 metres";
+            this.lblLengthGuide.Text = "Enter a value between 800 and 2000 metres";
             // 
             // lblWidthGuide
             // 
@@ -155,7 +155,7 @@ namespace OptimisingWind
             this.lblWidthGuide.Name = "lblWidthGuide";
             this.lblWidthGuide.Size = new System.Drawing.Size(297, 20);
             this.lblWidthGuide.TabIndex = 11;
-            this.lblWidthGuide.Text = "Enter a value between 800 and 4000 metres";
+            this.lblWidthGuide.Text = "Enter a value between 800 and 2000 metres";
             this.lblWidthGuide.Click += new System.EventHandler(this.lblWidthGuide_Click);
             // 
             // lblTurbineNoGuide
@@ -165,7 +165,7 @@ namespace OptimisingWind
             this.lblTurbineNoGuide.Name = "lblTurbineNoGuide";
             this.lblTurbineNoGuide.Size = new System.Drawing.Size(301, 20);
             this.lblTurbineNoGuide.TabIndex = 12;
-            this.lblTurbineNoGuide.Text = "Enter a value greater than 0 and less than 20";
+            this.lblTurbineNoGuide.Text = "Enter a value greater than 5 and less than 20";
             // 
             // btnBack
             // 

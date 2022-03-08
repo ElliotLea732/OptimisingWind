@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OptimisingWind
 {
-    class Turbine
+    public class Turbine
     {
 
         int xLoc = 0;
@@ -12,6 +12,12 @@ namespace OptimisingWind
         double receivedWind = 0;
         double powerOutput = 0;
         int cost = 100;
+
+        public Turbine(int inX, int inY)
+        {
+            xLoc = inX;
+            yLoc = inY;
+        }
 
         public double calculatePowerOutput()
         {
@@ -51,6 +57,11 @@ namespace OptimisingWind
         public int getCost()
         {
             return cost;
+        }
+
+        public void setSpeed(int inSpeed)
+        {
+            receivedWind = inSpeed;
         }
 
     }
