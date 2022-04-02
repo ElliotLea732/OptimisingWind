@@ -33,6 +33,18 @@ namespace OptimisingWind
 
             makeTurbines(); //create turbines and add them to turbine store table
 
+            Turbine newTurbine = new Turbine(0, 0); //make new turbine picture
+            newTurbine.Name = "pictureBox0";
+            newTurbine.Size = new Size(30, 30);
+            newTurbine.Location = new Point(600, 174);
+            newTurbine.Image = Image.FromFile("..\\turbineImage.jpg");
+            newTurbine.SizeMode = PictureBoxSizeMode.StretchImage;
+            newTurbine.BringToFront();
+            newTurbine.AllowDrop = true;
+            //this.Controls.Add(newPictureBox);
+            this.Controls.Add(newTurbine);
+
+            TurbineList.Add(newTurbine); //add turbine picture to list
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -71,17 +83,17 @@ namespace OptimisingWind
             for (int i = 1; i <= noTurbines; i++)
             {
  
-                PictureBox newPictureBox = new PictureBox(); //make new turbine picture
-                newPictureBox.Name = "PictureBox" + i.ToString();
-                newPictureBox.Size = new Size(30, 30);
-                newPictureBox.Image = Image.FromFile("..\\turbineImage.jpg");
-                newPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                newPictureBox.BringToFront();
-                newPictureBox.AllowDrop = true;
+                Turbine newTurbine = new Turbine(0, 0); //make new turbine picture
+                newTurbine.Name = "pictureBox" + i.ToString();
+                newTurbine.Size = new Size(30, 30);
+                newTurbine.Image = Image.FromFile("..\\turbineImage.jpg");
+                newTurbine.SizeMode = PictureBoxSizeMode.StretchImage;
+                newTurbine.BringToFront();
+                newTurbine.AllowDrop = true;
                 //this.Controls.Add(newPictureBox);
-                tblTurbineStore.Controls.Add(newPictureBox);
+                tblTurbineStore.Controls.Add(newTurbine);
 
-                TurbineList.Add(new Turbine(newPictureBox.Location.X, newPictureBox.Location.Y)); //add turbine picture to list
+                TurbineList.Add(newTurbine); //add turbine picture to list
             }
 
         }
@@ -101,5 +113,7 @@ namespace OptimisingWind
             powerOutput = Math.Round(powerOutput, 2);
             System.Windows.Forms.MessageBox.Show("The total power output is: " + powerOutput + "kW.");
         }
+
+
     }
 }
