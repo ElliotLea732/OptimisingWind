@@ -10,7 +10,7 @@ namespace OptimisingWind
 {
     public partial class setupNewFile : Form
     {
-        programForm programForm;
+        public programForm programForm;
         public setupNewFile()
         {
             InitializeComponent();
@@ -96,5 +96,6 @@ namespace OptimisingWind
             programForm = null;  //If form is closed make sure reference is set to null
             Show();
         }
+
     }
 }

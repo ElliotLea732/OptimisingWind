@@ -37,16 +37,15 @@ namespace OptimisingWind
             this.btnFile = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnRunSettings = new System.Windows.Forms.Button();
-            this.tblTurbineStore = new System.Windows.Forms.TableLayoutPanel();
             this.SuspendLayout();
             // 
             // lblTurbineArea
             // 
             this.lblTurbineArea.AutoSize = true;
             this.lblTurbineArea.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTurbineArea.Location = new System.Drawing.Point(81, 80);
+            this.lblTurbineArea.Location = new System.Drawing.Point(71, 60);
             this.lblTurbineArea.Name = "lblTurbineArea";
-            this.lblTurbineArea.Size = new System.Drawing.Size(173, 38);
+            this.lblTurbineArea.Size = new System.Drawing.Size(135, 30);
             this.lblTurbineArea.TabIndex = 0;
             this.lblTurbineArea.Text = "Turbine area";
             // 
@@ -54,17 +53,18 @@ namespace OptimisingWind
             // 
             this.lblUnplaced.AutoSize = true;
             this.lblUnplaced.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblUnplaced.Location = new System.Drawing.Point(670, 119);
+            this.lblUnplaced.Location = new System.Drawing.Point(586, 89);
             this.lblUnplaced.Name = "lblUnplaced";
-            this.lblUnplaced.Size = new System.Drawing.Size(171, 28);
+            this.lblUnplaced.Size = new System.Drawing.Size(136, 21);
             this.lblUnplaced.TabIndex = 1;
             this.lblUnplaced.Text = "Unplaced turbines";
             // 
             // btnRun
             // 
-            this.btnRun.Location = new System.Drawing.Point(851, 444);
+            this.btnRun.Location = new System.Drawing.Point(745, 333);
+            this.btnRun.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRun.Name = "btnRun";
-            this.btnRun.Size = new System.Drawing.Size(164, 47);
+            this.btnRun.Size = new System.Drawing.Size(144, 35);
             this.btnRun.TabIndex = 4;
             this.btnRun.Text = "Run";
             this.btnRun.UseVisualStyleBackColor = true;
@@ -72,9 +72,10 @@ namespace OptimisingWind
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(625, 444);
+            this.btnBack.Location = new System.Drawing.Point(547, 333);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(134, 47);
+            this.btnBack.Size = new System.Drawing.Size(117, 35);
             this.btnBack.TabIndex = 5;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -84,63 +85,47 @@ namespace OptimisingWind
             // 
             this.lblProgramName.AutoSize = true;
             this.lblProgramName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblProgramName.Location = new System.Drawing.Point(3, 4);
+            this.lblProgramName.Location = new System.Drawing.Point(3, 3);
             this.lblProgramName.Name = "lblProgramName";
-            this.lblProgramName.Size = new System.Drawing.Size(133, 28);
+            this.lblProgramName.Size = new System.Drawing.Size(107, 21);
             this.lblProgramName.TabIndex = 6;
             this.lblProgramName.Text = "ProgamName";
             // 
             // btnFile
             // 
-            this.btnFile.Location = new System.Drawing.Point(151, 6);
+            this.btnFile.Location = new System.Drawing.Point(132, 4);
+            this.btnFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFile.Name = "btnFile";
-            this.btnFile.Size = new System.Drawing.Size(226, 31);
+            this.btnFile.Size = new System.Drawing.Size(198, 23);
             this.btnFile.TabIndex = 7;
             this.btnFile.Text = "File (save and load program)";
             this.btnFile.UseVisualStyleBackColor = true;
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(383, 6);
+            this.btnEdit.Location = new System.Drawing.Point(335, 4);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(226, 31);
+            this.btnEdit.Size = new System.Drawing.Size(198, 23);
             this.btnEdit.TabIndex = 8;
             this.btnEdit.Text = "Edit program settings";
             this.btnEdit.UseVisualStyleBackColor = true;
             // 
             // btnRunSettings
             // 
-            this.btnRunSettings.Location = new System.Drawing.Point(615, 6);
+            this.btnRunSettings.Location = new System.Drawing.Point(538, 4);
+            this.btnRunSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRunSettings.Name = "btnRunSettings";
-            this.btnRunSettings.Size = new System.Drawing.Size(226, 31);
+            this.btnRunSettings.Size = new System.Drawing.Size(198, 23);
             this.btnRunSettings.TabIndex = 9;
             this.btnRunSettings.Text = "Edit run settings";
             this.btnRunSettings.UseVisualStyleBackColor = true;
             // 
-            // tblTurbineStore
-            // 
-            this.tblTurbineStore.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tblTurbineStore.ColumnCount = 5;
-            this.tblTurbineStore.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tblTurbineStore.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tblTurbineStore.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tblTurbineStore.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tblTurbineStore.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tblTurbineStore.Location = new System.Drawing.Point(670, 174);
-            this.tblTurbineStore.Name = "tblTurbineStore";
-            this.tblTurbineStore.RowCount = 4;
-            this.tblTurbineStore.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tblTurbineStore.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tblTurbineStore.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tblTurbineStore.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tblTurbineStore.Size = new System.Drawing.Size(200, 160);
-            this.tblTurbineStore.TabIndex = 11;
-            // 
             // programForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1174, 593);
+            this.ClientSize = new System.Drawing.Size(1002, 630);
             this.Controls.Add(this.btnRunSettings);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnFile);
@@ -149,7 +134,7 @@ namespace OptimisingWind
             this.Controls.Add(this.btnRun);
             this.Controls.Add(this.lblUnplaced);
             this.Controls.Add(this.lblTurbineArea);
-            this.Controls.Add(this.tblTurbineStore);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "programForm";
             this.Text = "programForm";
             this.Load += new System.EventHandler(this.programForm_Load);
@@ -168,6 +153,5 @@ namespace OptimisingWind
         private System.Windows.Forms.Button btnFile;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnRunSettings;
-        private System.Windows.Forms.TableLayoutPanel tblTurbineStore;
     }
 }

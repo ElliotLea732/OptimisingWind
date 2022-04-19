@@ -10,18 +10,24 @@ namespace OptimisingWind
     public class Turbine : PictureBox
     {
 
+        int ID;
         int xLoc = 0;
         int yLoc = 0;
+        int startTop;
+        int startLeft;
         double receivedWind = 0;
         double powerOutput = 0;
         int cost = 100;
+        programForm programForm;
 
         Point point;
 
-        public Turbine(int inX, int inY)
+        public Turbine(int Id, int inX, int inY, programForm inForm)
         {
+            ID = Id;
             xLoc = inX;
             yLoc = inY;
+            programForm = inForm;
 
         }
 
@@ -70,21 +76,54 @@ namespace OptimisingWind
             receivedWind = inSpeed;
         }
 
-        protected override void OnMouseDown(MouseEventArgs e)
+        protected override void OnMouseDown(MouseEventArgs e)  //implemented drag and drop functionality for turbines
         {
+            startLeft = this.Left;
+            startTop = this.Top;
+
             point = e.Location;
             base.OnMouseDown(e);
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Left)
+
+            if (e.Button == MouseButtons.Left)
             {
                 this.Left += e.X - point.X;
                 this.Top += e.Y - point.Y;
+                xLoc = this.Left;
+                yLoc = this.Top;
             }
             base.OnMouseMove(e);
+
         }
 
+        protected override void OnMouseUp(MouseEventArgs e)
+        {
+            if (this.Left < 71 || this.Left > 471 || this.Top < 100 || this.Top > 500)   //ensure new location is allowed
+            {
+                this.Left = startLeft;
+                this.Top = startTop;
+            }
+
+
+            foreach (Turbine turbine in programForm.TurbineList)     //check if new location overlaps with any other turbine
+            {
+                if (ID != turbine.ID)
+                {
+                    if ((turbine.xLoc - this.Left < 40 && turbine.xLoc - this.Left > -40) && (turbine.yLoc - this.Top < 40 && turbine.yLoc - this.Top > -40))
+                    {
+                       this.Left = startLeft;
+                       this.Top = startTop;
+                    }
+                }
+            }
+
+            programForm.createAreaBoxes(); //fix boxes
+
+        }
+
+ 
     }
 }

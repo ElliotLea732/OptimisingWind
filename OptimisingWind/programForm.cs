@@ -17,7 +17,7 @@ namespace OptimisingWind
 
         public int windSpeed = 8;
 
-        List<Turbine> TurbineList = new List<Turbine>();
+        public List<Turbine> TurbineList = new List<Turbine>();
 
         public programForm()
         {
@@ -29,22 +29,12 @@ namespace OptimisingWind
 
             lblProgramName.Text = programName;
 
-            createAreaTable(); //create table representing planned area
+            this.Show(); //ensures rectangle is visible
+
+            createAreaBoxes(); //create the box to place turbines in
 
             makeTurbines(); //create turbines and add them to turbine store table
 
-            Turbine newTurbine = new Turbine(0, 0); //make new turbine picture
-            newTurbine.Name = "pictureBox0";
-            newTurbine.Size = new Size(30, 30);
-            newTurbine.Location = new Point(600, 174);
-            newTurbine.Image = Image.FromFile("..\\turbineImage.jpg");
-            newTurbine.SizeMode = PictureBoxSizeMode.StretchImage;
-            newTurbine.BringToFront();
-            newTurbine.AllowDrop = true;
-            //this.Controls.Add(newPictureBox);
-            this.Controls.Add(newTurbine);
-
-            TurbineList.Add(newTurbine); //add turbine picture to list
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -53,29 +43,25 @@ namespace OptimisingWind
             Hide();
         }
 
-        private void createAreaTable()
+     
+
+        public void createAreaBoxes()
         {
-            int numCol = areaLen / 200;  //get the number of rows and coloumns from user's input
-            int numRow = areaWidth / 200;
+            int boxWidth = areaLen / 5;
+            int boxHeight = areaWidth / 5;
 
-            TableLayoutPanel windTurbineArea = new TableLayoutPanel(); //create table and add table info
-            windTurbineArea.Location = new Point(80, 135);
-            windTurbineArea.Name = "tblTurbineArea";
-            windTurbineArea.Size = new Size(areaLen / 5, areaWidth / 5);
-            windTurbineArea.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
-            windTurbineArea.ColumnCount = numCol;
-            windTurbineArea.RowCount = numRow;
+            System.Drawing.Pen myPen = new System.Drawing.Pen(System.Drawing.Color.Black);
+            System.Drawing.Graphics formGraphics;
+            formGraphics = this.CreateGraphics();
+            formGraphics.DrawRectangle(myPen, new Rectangle(71, 100, boxWidth, boxHeight));
+ 
 
-            for (int i = 1; i <= (numCol + 1); i++) //make sure all cells are equal size
-            {
-                windTurbineArea.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, (100 / numCol)));
-            }
-            for (int i = 1; i <= (numRow + 1); i++)
-            {
-                windTurbineArea.RowStyles.Add(new RowStyle(SizeType.Percent, (100 / numRow)));
-            }
+            formGraphics = this.CreateGraphics();
+            formGraphics.DrawRectangle(myPen, new Rectangle(585, 130, 200, 160));
+            myPen.Dispose();
+            formGraphics.Dispose();
 
-            this.Controls.Add(windTurbineArea);
+
         }
 
         private void makeTurbines()
@@ -83,15 +69,26 @@ namespace OptimisingWind
             for (int i = 1; i <= noTurbines; i++)
             {
  
-                Turbine newTurbine = new Turbine(0, 0); //make new turbine picture
+                Turbine newTurbine = new Turbine(i, 0, 0, this); //make new turbine picture
                 newTurbine.Name = "pictureBox" + i.ToString();
-                newTurbine.Size = new Size(30, 30);
+                newTurbine.Size = new Size(30, 30);         
+
+                if (i <= 5){     //set start location for new turbine
+                    newTurbine.Location = new Point((590 + (i - 1) * 40), 135);
+                } else if (i <= 10 && i > 5){
+                    newTurbine.Location = new Point((590 + (i - 6) * 40), 175);
+                } else if (i <= 15 && i > 10){
+                    newTurbine.Location = new Point((590 + (i - 11) * 40), 215);
+                } else if (i <= 20 && i > 15){
+                    newTurbine.Location = new Point((590 + (i - 16) * 40), 255);
+                } 
+
                 newTurbine.Image = Image.FromFile("..\\turbineImage.jpg");
                 newTurbine.SizeMode = PictureBoxSizeMode.StretchImage;
                 newTurbine.BringToFront();
                 newTurbine.AllowDrop = true;
-                //this.Controls.Add(newPictureBox);
-                tblTurbineStore.Controls.Add(newTurbine);
+                this.Controls.Add(newTurbine);
+
 
                 TurbineList.Add(newTurbine); //add turbine picture to list
             }
@@ -100,6 +97,7 @@ namespace OptimisingWind
 
         private void btnRun_Click(object sender, EventArgs e)
         {
+
             double powerOutput = 0;
 
             foreach (Turbine turbine in TurbineList) //set the wind speed for each turbine
