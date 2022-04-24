@@ -15,7 +15,8 @@ namespace OptimisingWind
         public int areaWidth;
         public int noTurbines;
 
-        public int windSpeed = 8;
+        public int windSpeed = 14;
+        public int windDirection = 1;
 
         public List<Turbine> TurbineList = new List<Turbine>();
 
@@ -95,22 +96,91 @@ namespace OptimisingWind
 
         }
 
+        public double calculatePotentialPowerOutput()
+        {
+            double powerOutput;
+
+            if (windSpeed >= 2.3 & windSpeed <= 12.8)
+            {
+                powerOutput = 0.3 * Math.Pow(windSpeed, 3);
+            }
+            else if (windSpeed > 12.8 & windSpeed < 18)
+            {
+                powerOutput = 630;
+            }
+            else
+            {
+                powerOutput = 0;
+            }
+            return powerOutput;
+        }
+
         private void btnRun_Click(object sender, EventArgs e)
         {
-
             double powerOutput = 0;
+            double potentialPowerOutput = 0;
+
+            List<Turbine> orderedTurbineList = new List<Turbine>();
 
             foreach (Turbine turbine in TurbineList) //set the wind speed for each turbine
             {
                 turbine.setSpeed(windSpeed);
             }
+
+            orderedTurbineList = createOrderedList();
+
+
+            //make wind wakes here
+
+
+
             foreach (Turbine turbine in TurbineList) //get the power output for all wind turbines
             {
                 powerOutput += turbine.calculatePowerOutput();
             }
+            for (int i = 1; i <= noTurbines; i++) //gets the potential power output so it can be compared to achieved power output
+            {
+                potentialPowerOutput += calculatePotentialPowerOutput();
+            }
             powerOutput = Math.Round(powerOutput, 2);
             System.Windows.Forms.MessageBox.Show("The total power output is: " + powerOutput + "kW.");
+            System.Windows.Forms.MessageBox.Show("The total potential power output is: " + potentialPowerOutput + "kW.");
+
+
+           //foreach (Turbine turbine in orderedTurbineList) 
+           //{
+           //     System.Windows.Forms.MessageBox.Show("ordered list y value: " + turbine.getyLoc());
+           // }
+
         }
+
+        private List<Turbine> createOrderedList()
+        {
+            List<Turbine> orderedTurbineList = new List<Turbine>();
+            orderedTurbineList = TurbineList;
+
+            if (windDirection == 1)           //sort turbines for north wind direction
+            {
+                orderedTurbineList.Sort((x, y) => x.getyLoc().CompareTo(y.getyLoc()));
+
+            } else if (windDirection == 2)    //sort turbines for east wind direction
+            {
+                orderedTurbineList.Sort((x, y) => x.getxLoc().CompareTo(y.getxLoc()));
+                orderedTurbineList.Reverse();
+
+            } else if (windDirection == 3)    //sort turbines for south wind direction
+            {
+                orderedTurbineList.Sort((x, y) => x.getyLoc().CompareTo(y.getyLoc()));
+                orderedTurbineList.Reverse();
+
+            } else if (windDirection == 4)    //sort turbines for west wind direction
+            {
+                orderedTurbineList.Sort((x, y) => x.getxLoc().CompareTo(y.getxLoc()));
+
+            }
+
+            return orderedTurbineList;
+        } 
 
 
     }

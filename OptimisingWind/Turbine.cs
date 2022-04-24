@@ -20,6 +20,8 @@ namespace OptimisingWind
         int cost = 100;
         programForm programForm;
 
+        WindWake turbineWake;
+
         Point point;
 
         public Turbine(int Id, int inX, int inY, programForm inForm)
@@ -74,6 +76,13 @@ namespace OptimisingWind
         public void setSpeed(int inSpeed)
         {
             receivedWind = inSpeed;
+        }
+
+        public void createWake(double inVel, int inDis) //create wind wake, then update the receivedWind variable
+        {
+            turbineWake = new WindWake(inVel, inDis);
+            receivedWind = turbineWake.getFinalVelocity();
+
         }
 
         protected override void OnMouseDown(MouseEventArgs e)  //implemented drag and drop functionality for turbines
