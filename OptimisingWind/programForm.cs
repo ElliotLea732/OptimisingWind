@@ -19,6 +19,7 @@ namespace OptimisingWind
         public int windDirection = 1;
 
         public List<Turbine> TurbineList = new List<Turbine>();
+        public runSettings settingsForm; 
 
         public programForm()
         {
@@ -37,13 +38,6 @@ namespace OptimisingWind
             makeTurbines(); //create turbines and add them to turbine store table
 
         }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            Owner.Show();  //Show the previous form
-            Hide();
-        }
-
      
 
         public void createAreaBoxes()
@@ -54,11 +48,11 @@ namespace OptimisingWind
             System.Drawing.Pen myPen = new System.Drawing.Pen(System.Drawing.Color.Black);
             System.Drawing.Graphics formGraphics;
             formGraphics = this.CreateGraphics();
-            formGraphics.DrawRectangle(myPen, new Rectangle(71, 100, boxWidth, boxHeight));
+            formGraphics.DrawRectangle(myPen, new Rectangle(60, 130, boxWidth, boxHeight));
  
 
             formGraphics = this.CreateGraphics();
-            formGraphics.DrawRectangle(myPen, new Rectangle(585, 130, 200, 160));
+            formGraphics.DrawRectangle(myPen, new Rectangle(655, 130, 200, 160));
             myPen.Dispose();
             formGraphics.Dispose();
 
@@ -75,13 +69,13 @@ namespace OptimisingWind
                 newTurbine.Size = new Size(30, 30);         
 
                 if (i <= 5){     //set start location for new turbine
-                    newTurbine.Location = new Point((590 + (i - 1) * 40), 135);
+                    newTurbine.Location = new Point((660 + (i - 1) * 40), 135);
                 } else if (i <= 10 && i > 5){
-                    newTurbine.Location = new Point((590 + (i - 6) * 40), 175);
+                    newTurbine.Location = new Point((660 + (i - 6) * 40), 175);
                 } else if (i <= 15 && i > 10){
-                    newTurbine.Location = new Point((590 + (i - 11) * 40), 215);
+                    newTurbine.Location = new Point((660 + (i - 11) * 40), 215);
                 } else if (i <= 20 && i > 15){
-                    newTurbine.Location = new Point((590 + (i - 16) * 40), 255);
+                    newTurbine.Location = new Point((660 + (i - 16) * 40), 255);
                 } 
 
                 newTurbine.Image = Image.FromFile("..\\turbineImage.jpg");
@@ -147,11 +141,11 @@ namespace OptimisingWind
             System.Windows.Forms.MessageBox.Show("The total potential power output is: " + potentialPowerOutput + "kW.");
 
 
-           //foreach (Turbine turbine in orderedTurbineList) 
-           //{
-           //     System.Windows.Forms.MessageBox.Show("ordered list y value: " + turbine.getyLoc());
-           // }
-
+            //foreach (Turbine turbine in orderedTurbineList) 
+            //{
+            //    System.Windows.Forms.MessageBox.Show("ordered list y value: " + turbine.getyLoc());
+            //}
+            
         }
 
         private List<Turbine> createOrderedList()
@@ -180,8 +174,33 @@ namespace OptimisingWind
             }
 
             return orderedTurbineList;
-        } 
+        }
 
+        private void btnRunSettings_Click(object sender, EventArgs e)
+        {
+            settingsForm = new runSettings();   //Create form 
+            settingsForm.FormClosed += settingsForm_FormClosed;  //Add eventhandler to cleanup after form closes
+            settingsForm.Show(this);  //Show Form assigning this form as the forms owner
+            settingsForm.ownerForm = this;
+            Hide();
+        }
 
+        void settingsForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            settingsForm = null;  //If form is closed make sure reference is set to null
+            Show();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)   //returns to setupNewFile form
+        {
+            Owner.Show();
+            this.Close();
+        }
+
+        private void btnMenu_Click(object sender, EventArgs e)  //returns to the menu
+        {
+            Owner.Owner.Show();
+            this.Hide();
+        }
     }
 }

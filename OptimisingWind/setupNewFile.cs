@@ -73,11 +73,9 @@ namespace OptimisingWind
             {
                 //assign validated variables and make new form
 
-                if (programForm == null)
-                {
-                    programForm = new programForm();   //Create form if not created
-                    programForm.FormClosed += programForm_FormClosed;  //Add eventhandler to cleanup after form closes
-                }
+                programForm = new programForm();   //Create form 
+                programForm.FormClosed += programForm_FormClosed;  //Add eventhandler to cleanup after form closes
+                
 
                 //if all variables validated, assign variables to main program form
                 programForm.programName = fileName;

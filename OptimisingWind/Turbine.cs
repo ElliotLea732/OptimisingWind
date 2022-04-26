@@ -110,7 +110,7 @@ namespace OptimisingWind
 
         protected override void OnMouseUp(MouseEventArgs e)
         {
-            if (this.Left < 71 || this.Left > 471 || this.Top < 100 || this.Top > 500)   //ensure new location is allowed
+            if (this.Left < 60 || this.Left > 460 || this.Top < 130 || this.Top > 530)   //ensure new location is allowed
             {
                 this.Left = startLeft;
                 this.Top = startTop;
