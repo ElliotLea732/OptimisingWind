@@ -18,8 +18,8 @@ namespace OptimisingWind
         double receivedWind = 0;
         double powerOutput = 0;
         int cost = 100;
-        programForm programForm;
 
+        programForm programForm;
         WindWake turbineWake;
 
         Point point;
@@ -78,9 +78,19 @@ namespace OptimisingWind
             receivedWind = inSpeed;
         }
 
-        public void createWake(double inVel, int inDis) //create wind wake, then update the receivedWind variable
+        public void setID(int inID)
         {
-            turbineWake = new WindWake(inVel, inDis);
+            ID = inID;
+        }
+
+        public int getID()
+        {
+            return ID;
+        }
+
+        public void createWake(double inVel) //create wind wake, then update the receivedWind variable
+        {
+            turbineWake = new WindWake(inVel, this, programForm);
             receivedWind = turbineWake.getFinalVelocity();
 
         }

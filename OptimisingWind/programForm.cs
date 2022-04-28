@@ -19,6 +19,7 @@ namespace OptimisingWind
         public int windDirection = 1;
 
         public List<Turbine> TurbineList = new List<Turbine>();
+        public List<Turbine> orderedTurbineList = new List<Turbine>();
         public runSettings settingsForm; 
 
         public programForm()
@@ -114,8 +115,6 @@ namespace OptimisingWind
             double powerOutput = 0;
             double potentialPowerOutput = 0;
 
-            List<Turbine> orderedTurbineList = new List<Turbine>();
-
             foreach (Turbine turbine in TurbineList) //set the wind speed for each turbine
             {
                 turbine.setSpeed(windSpeed);
@@ -123,10 +122,10 @@ namespace OptimisingWind
 
             orderedTurbineList = createOrderedList();
 
-
-            //make wind wakes here
-
-
+            foreach (Turbine turbine in TurbineList) //make wind wakes for each turbine
+            {
+                turbine.createWake(windSpeed);
+            }
 
             foreach (Turbine turbine in TurbineList) //get the power output for all wind turbines
             {
@@ -151,6 +150,7 @@ namespace OptimisingWind
         private List<Turbine> createOrderedList()
         {
             List<Turbine> orderedTurbineList = new List<Turbine>();
+            int id = 1;
             orderedTurbineList = TurbineList;
 
             if (windDirection == 1)           //sort turbines for north wind direction
@@ -170,7 +170,12 @@ namespace OptimisingWind
             } else if (windDirection == 4)    //sort turbines for west wind direction
             {
                 orderedTurbineList.Sort((x, y) => x.getxLoc().CompareTo(y.getxLoc()));
+            }
 
+            foreach (Turbine turbine in orderedTurbineList) //set IDs for ordered list
+            {
+                turbine.setID(id);
+                id += 1;
             }
 
             return orderedTurbineList;
