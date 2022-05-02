@@ -89,6 +89,7 @@ namespace OptimisingWind
             this.btnLoadFile.TabIndex = 4;
             this.btnLoadFile.Text = "Load file";
             this.btnLoadFile.UseVisualStyleBackColor = true;
+            this.btnLoadFile.Click += new System.EventHandler(this.btnLoadFile_Click);
             // 
             // btnQuit
             // 

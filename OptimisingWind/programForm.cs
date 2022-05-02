@@ -20,7 +20,8 @@ namespace OptimisingWind
 
         public List<Turbine> TurbineList = new List<Turbine>();
         public List<Turbine> orderedTurbineList = new List<Turbine>();
-        public runSettings settingsForm; 
+        public runSettings settingsForm;
+        public outputForm programOutput;
 
         public programForm()
         {
@@ -135,16 +136,23 @@ namespace OptimisingWind
             {
                 potentialPowerOutput += calculatePotentialPowerOutput();
             }
+            
             powerOutput = Math.Round(powerOutput, 2);
-            System.Windows.Forms.MessageBox.Show("The total power output is: " + powerOutput + "kW.");
-            System.Windows.Forms.MessageBox.Show("The total potential power output is: " + potentialPowerOutput + "kW.");
+           
+            //System.Windows.Forms.MessageBox.Show("The total power output is: " + powerOutput + "kW.");
+            //System.Windows.Forms.MessageBox.Show("The total potential power output is: " + potentialPowerOutput + "kW.");
 
+            programOutput = new outputForm(potentialPowerOutput, powerOutput, TurbineList);   //Create form 
+            programOutput.FormClosed += programOutput_FormClosed;  //Add eventhandler to cleanup after form closes
+            programOutput.Show(this);  //Show Form assigning this form as the forms owner
+            programOutput.ownerForm = this;
+            
 
             //foreach (Turbine turbine in orderedTurbineList) 
             //{
             //    System.Windows.Forms.MessageBox.Show("ordered list y value: " + turbine.getyLoc());
             //}
-            
+
         }
 
         private List<Turbine> createOrderedList()
@@ -193,6 +201,12 @@ namespace OptimisingWind
         void settingsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             settingsForm = null;  //If form is closed make sure reference is set to null
+            Show();
+        }
+
+        void programOutput_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            programOutput = null;  //If form is closed make sure reference is set to null
             Show();
         }
 
