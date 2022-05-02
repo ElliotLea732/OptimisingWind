@@ -46,5 +46,10 @@ namespace OptimisingWind
         {
             this.Close();
         }
+
+        private void btnLoadFile_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

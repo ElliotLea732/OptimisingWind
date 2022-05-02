@@ -17,7 +17,7 @@ namespace OptimisingWind
         int startLeft;
         double receivedWind = 0;
         double powerOutput = 0;
-        int cost = 100;
+        int cost = 2;
 
         programForm programForm;
         WindWake turbineWake;
@@ -86,6 +86,11 @@ namespace OptimisingWind
         public int getID()
         {
             return ID;
+        }
+
+        public double getPower()
+        {
+            return powerOutput;
         }
 
         public void createWake(double inVel) //create wind wake, then update the receivedWind variable
